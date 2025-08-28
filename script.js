@@ -55,6 +55,9 @@ async function loadSongFromHash(songs) {
   const res = await fetch(`songs/${song.file}`);
   lyricsContainer.innerHTML = await res.text();
 
+  // instantly reset scroll position to top
+  window.scrollTo(0, 0);
+
   // Close mobile menu after selection
   document.getElementById("mobile-menu").classList.remove("show");
 }
