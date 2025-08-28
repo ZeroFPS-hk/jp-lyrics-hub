@@ -1,46 +1,190 @@
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 21px;
-    line-height: 1.8;
-    background-color: #f9f9f9;
-    color: #333;
-    width: 100%;
-    padding: 30px 0px;
-    margin: auto;
-    display: flex;
-    gap: 30px;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 21px;
+  line-height: 1.8;
+  background: #f9f9f9;
+  color: #222;
+  display: flex;
 }
 
-.lyrics-container{
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    padding-left: 20%;
-    gap: 30px;
+/* ===== Sidebar (desktop) ===== */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+#sidebar h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#sidebar nav a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+#sidebar nav a.active {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ===== Topbar (mobile) ===== */
+#topbar {
+  display: none;
+  background: #333;
+  color: #fff;
+  padding: 0.75rem;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+#topbar h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+#menu-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+#mobile-menu {
+  display: none;
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  background: #444;
+  z-index: 999;
+}
+
+#mobile-menu a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem;
+  border-bottom: 1px solid #555;
+}
+
+#mobile-menu.show {
+  display: block;
+}
+
+/* ===== Main content ===== */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 220px; /* sidebar space */
+  padding: 2rem;
+}
+
+#video-container {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 500px;
+  max-width: 35%;
+  aspect-ratio: 16/9;
+}
+
+#video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#lyrics-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 40%; /* prevents overlap with video */
+  max-width: 600px;
+  gap: 30px;
 }
 
 ruby {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 rt {
-    font-size: 14px;
-    color: #666;
+  font-size: 14px;
 }
 
-.video-container{
-    flex: 1;
-    position: fixed;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-    width: 30vw; /* Make width relative to viewport width */
-    max-width: 560px; /* Prevent it from being too large */
-    height: calc(30vw * 0.5625); /* Maintain 16:9 aspect ratio */
-    max-height: 315px;
+/* ===== Mobile styles ===== */
+@media (max-width: 780px) {
+  body {
+    padding-top: 70px; /* height of the top bar */
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  #topbar {
+    display: block;
+  }
+
+  main {
+    margin: 0px 16px 32px 16px;
+    padding: 0;
+  }
+
+  #video-container {
+    align-self: center;
+    position: static;
+    width: 80%;
+    max-width: 80%;
+    margin-bottom: 0;
+    transform: none;
+  }
+
+  #lyrics-container {
+    margin: 20px 5% 20px 5%;
+    max-width: none;
+  }
 }
 
-iframe.video-right{
-    width: 100%;
-    height: 100%;
+/* --- DESKTOP SMALLER SCREENS --- */
+@media ((min-width: 781px) and (max-width: 1199px)) {
+  #lyrics-container {
+    margin-left: 2.5%;       /* shrink side margin */
+    margin-right: 40%;     /* leave less space for video */
+    max-width: 500px;
+  }
+
+  #video-container{
+    max-width: 30%;
+    right: 10px;
+  }
+}
+
+@media ((min-width: 1199px) and (max-width: 1399px)) {
+  #lyrics-container {
+    margin-left: 5%;       /* shrink side margin */
+    margin-right: 40%;     /* leave less space for video */
+    max-width: 500px;
+  }
 }
