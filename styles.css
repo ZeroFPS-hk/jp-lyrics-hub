@@ -134,7 +134,7 @@ rt {
 }
 
 /* ===== Mobile styles ===== */
-@media (max-width: 780px) {
+@media (max-width: 781px) {
   body {
     padding-top: 70px; /* height of the top bar */
   }
@@ -168,7 +168,7 @@ rt {
 }
 
 /* --- DESKTOP SMALLER SCREENS --- */
-@media ((min-width: 781px) and (max-width: 1199px)) {
+@media ((min-width: 781px) and (max-width: 1201px)) {
   #lyrics-container {
     margin-left: 2.5%;       /* shrink side margin */
     margin-right: 40%;     /* leave less space for video */
@@ -181,10 +181,14 @@ rt {
   }
 }
 
-@media ((min-width: 1199px) and (max-width: 1399px)) {
+@media ((min-width: 1201px) and (max-width: 1399px)) {
   #lyrics-container {
-    margin-left: 5%;       /* shrink side margin */
-    margin-right: 40%;     /* leave less space for video */
+    margin-left: 5%;
+    margin-right: 40%;
     max-width: 500px;
+  }
+
+  #video-container{
+    max-width: 30%;
   }
 }
